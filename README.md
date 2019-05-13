@@ -1,7 +1,7 @@
 # cadastro_cliente_api
 
 ## Objetivo
-  Criação de um projeto de WebService RestFull desenvolvido na linguagem de programação Java com a ajuda do Framework Spring Boot.
+  Criação de um projeto de WebService Rest desenvolvido na linguagem de programação Java com a ajuda do Framework Spring Boot.
   Nesse projeto é disponibilizado varios serviços onde quem consumir poderá Cadastrar Cliente, Alterar Cliente, Pesquisar todos os Clientes cadastrados na base de dados, Pesquisar somente um Cliente pelo seu ID e Excluir um Cliente cadastrado pelo seu ID.
   Ao cadastrar o cliente o projeto salva para fins de pesquisa a temperatura Minima e Maxima do dia do cadastro, através de geolocalização, pelo numero do IP de origem é encontrado a cidade mais proxima do local.
   
