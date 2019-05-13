@@ -3,11 +3,14 @@
 ## Objetivo
   Criação de um projeto de WebService RestFull desenvolvido na linguagem de programação Java com a ajuda do Framework Spring Boot.
   Nesse projeto é disponibilizado varios serviços onde quem consumir poderá Cadastrar Cliente, Alterar Cliente, Pesquisar todos os Clientes cadastrados na base de dados, Pesquisar somente um Cliente pelo seu ID e Excluir um Cliente cadastrado pelo seu ID.
+  Ao cadastrar o cliente o projeto salva para fins de pesquisa a temperatura Minima e Maxima do dia do cadastro, através de geolocalização, pelo numero do IP de origem é encontrado a cidade mais proxima do local.
   
 ## Usando os Serviços Rest
   Quem for utilizar a api poderá chamar os serviços da seguinte forma:
   
   - Cadastrar Cliente
+  
+    ### url:8081/cadCliente
   
     @PostMapping("/cadCliente")
     
@@ -17,7 +20,10 @@
     Recebe como parametros um Objeto Cliente preenchido (Nome e Idade)
     
     
+    
     -Alterar Cliente
+    
+     ### url:8081/alterarCliente
     
      @PutMapping("/alterarCliente")
      
@@ -27,6 +33,8 @@
     Recebe como parametros um Objeto Cliente preenchido (codigo cliente, Nome e Idade) 
     
     - Pesquisar Cliente por ID
+    
+    ### url:8081/pesqCliente/{idCliente}
    
     @GetMapping("/pesqCliente/{idCliente}")
     
@@ -39,11 +47,15 @@
     
     @GetMapping("/pesqTodosCliente")
     
+    ### url:8081/pesqTodosCliente
+    
     public List<Cliente> getClientes()
     
     Este metodo retorna uma lista contendo todos os clientes cadastrados na base de dados
     
     - Excluir um Cliente pelo seu ID
+    
+    ### url:8081/deleteCli/{idCliente}
     
     @DeleteMapping("/deleteCli/{idCliente}")
     
@@ -54,7 +66,7 @@
     
     ## Ferramentas Usadas
     
-    Para o desenvolvimento do projeto foi usada a linguagem de programação JAVA na sua versão 8
+    Para o desenvolvimento do projeto foi usada a linguagem de programação JAVA na sua versão 8, IDE NetBeans
     
     Utilizado o Framework Spring Boot, para dar mais rapidez no desenvolvimento do Web Service, pois ja tem alguns metodos ja criados, principalmente na parte de conversao de arquivos JSON em objetos
     
@@ -62,7 +74,7 @@
     
     Utilizado para salvar os dados o banco de dados PostGreSQL, aqui no github deixei o backup e o arquivo de database, caso queira criar o banco de dados
     
-    Utilizado o software Postman para criar massas de testes
+    Utilizado o software Postman para criar massas de testes, testado na propria rede onde estava o WebService e tambem de redes de fora para conseguir pegar as informações de geolocalização
     
     
     ## Adicionais
