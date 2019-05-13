@@ -1,0 +1,55 @@
+CREATE DATABASE cadclientes
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+
+
+CREATE TABLE public.tab_cliente
+(
+   cd_cliente bigint NOT NULL, 
+   ds_nome character varying(100), 
+   nr_idade integer, 
+   CONSTRAINT pk_cliente PRIMARY KEY (cd_cliente)
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+ALTER TABLE public.tab_cliente
+  OWNER TO postgres;
+
+
+
+CREATE TABLE public.tab_localizacao_cli
+(
+   cd_localizacao bigint NOT NULL, 
+   id_cliente bigint, 
+   vr_temp_minima double precision,
+   vr_temp_maxima double precision,
+   dt_consulta date NOT NULL DEFAULT ('now'::text)::date,
+   CONSTRAINT pk_localizacao PRIMARY KEY (cd_localizacao), 
+   CONSTRAINT fk_localizacao_cliente FOREIGN KEY (id_cliente) REFERENCES public.tab_cliente (cd_cliente) ON UPDATE NO ACTION ON DELETE NO ACTION
+) 
+WITH (
+  OIDS = FALSE
+)
+;
+ALTER TABLE public.tab_localizacao_cli
+  OWNER TO postgres;
+
+
+
+
+CREATE SEQUENCE public.seq_cliente;
+ALTER SEQUENCE public.seq_cliente
+  OWNER TO postgres;
+
+
+CREATE SEQUENCE public.seq_localizacao;
+ALTER SEQUENCE public.seq_localizacao
+  OWNER TO postgres;
+
+
